@@ -1,11 +1,10 @@
-const { Router } = require('express')
-const UserModel = require('./apps/models/User')
+const { Router } = require('express');
+const UserSchema = require('./schema/user.schema.json')
+const UserController = require('./apps/controllers/userController');
+const schemaValidator = require("./apps/middlewares/validator");
 const routes = new Router();
 
-routes.get("/users", async (req, res) => {
-    const users = await UserModel.findAll();
-    res.send({ users: users })
-});
+routes.post("/user",schemaValidator(UserSchema) , UserController.create);
 
 routes.get('/health', (req, res) => {
     res.send({ message: "Conectado com sucesso" })
