@@ -4,7 +4,9 @@ require("./database/index.js");
 const routes = require('./routes.js')
 const express = require('express')
 const app = express()
+const cors = require('cors')
 
+app.use(cors())
 app.use(express.json());
 
 //usando as nossa rotas
