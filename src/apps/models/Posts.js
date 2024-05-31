@@ -14,6 +14,7 @@ class Posts extends Model {
         }
     );
     return this;
+    //alo
 }
 static associate(models){
     this.belongsTo(models.Users, {foreignKey:'author_id', as:'user'})
